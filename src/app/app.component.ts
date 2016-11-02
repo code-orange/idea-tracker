@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
 @Component({
 	selector: 'app',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'app works!';
+	authState = null;
+	authChecking = true;
+
+	constructor(private af: AngularFire) {
+		af.auth.subscribe((state: FirebaseAuthState) => {
+			this.authState = state;
+			this.authChecking = false;
+		});
+	}
+
+	get authenticated(): boolean {
+		return this.authState !== null;
+	}
 }
