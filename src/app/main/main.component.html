@@ -1,3 +1,2 @@
-<p>
-	main works!
-</p>
+<app-overview *ngIf="isOverview()"></app-overview>
+<app-idea *ngIf="!isOverview()" [name]="ideaName"></app-idea>
