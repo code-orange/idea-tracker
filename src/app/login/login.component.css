@@ -1,3 +1,7 @@
+:host {
+	text-align: center;
+}
+
 md-card {
 	width: 30%;
 	margin-left: auto;

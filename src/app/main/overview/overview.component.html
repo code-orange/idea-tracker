@@ -1,3 +1,14 @@
-<p>
-	overview works!
-</p>
+<app-header title="Ideas"></app-header>
+
+<section>
+	<button *ngIf="loaded" md-mini-fab (click)="createNew()" md-tooltip="Log a new idea" tooltip-position="below">
+		<md-icon class="md-24">add</md-icon>
+	</button>
+	<md-card *ngFor="let idea of ideas | async">
+		<md-card-title-group (click)="go(idea.$key)">
+			<img md-card-md-image [src]="idea.businessmodel | safe" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADWSURBVHhe7dAxAQAwEAOh+rcVY7Xwt4ME3jiTFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZJ1tH/NTSMi+0zktAAAAAElFTkSuQmCC">
+			<md-card-title>{{idea.name}}</md-card-title>
+			<md-card-subtitle>{{idea.description}}</md-card-subtitle>
+		</md-card-title-group>
+	</md-card>
+</section>

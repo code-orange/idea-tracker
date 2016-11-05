@@ -2,3 +2,14 @@ section {
 	margin: auto;
 	width: 1160px;
 }
+
+section > button[md-mini-fab] {
+	margin-top: calc(-20px - 1rem);
+	float: left;
+	margin-left: calc(66% + 1rem + 40px);
+}
+
+md-card {
+	margin: 1rem 0;
+	width: 66%;
+}
