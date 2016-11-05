@@ -1,0 +1,17 @@
+section {
+	margin: auto;
+	width: 1160px;
+}
+
+div.col {
+	width: 50%;
+	float: left;
+}
+
+md-card {
+	margin: 1rem;
+}
+
+div[contenteditable] {
+	white-space: pre-line;
+}
