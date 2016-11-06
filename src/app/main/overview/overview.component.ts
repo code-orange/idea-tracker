@@ -30,7 +30,9 @@ export class OverviewComponent{
 		this.ideas = af.database.list('/ideas');
 		this.ideas.subscribe(() => {
 			this.loaded = true;
-		})
+		}, () => {
+			af.auth.logout();
+		});
 	}
 
 	go (idea: string) {
