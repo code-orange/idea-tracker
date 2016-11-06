@@ -57,4 +57,11 @@ export class OverviewComponent{
 			this.dialogRef = null;
 		});
 	}
+
+	limitDescription (description: string) {
+		if (description.length >= 450) {
+			return description.substr(0, 450) + "…";
+		}
+		return description;
+	}
 }

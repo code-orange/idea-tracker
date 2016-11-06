@@ -8,7 +8,7 @@
 		<md-card-title-group (click)="go(idea.$key)">
 			<img md-card-md-image [src]="idea.businessmodel | safe" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADWSURBVHhe7dAxAQAwEAOh+rcVY7Xwt4ME3jiTFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZAWyAlmBrEBWICuQFcgKZJ1tH/NTSMi+0zktAAAAAElFTkSuQmCC">
 			<md-card-title>{{idea.name}}</md-card-title>
-			<md-card-subtitle>{{idea.description}}</md-card-subtitle>
+			<md-card-subtitle>{{limitDescription(idea.description)}}</md-card-subtitle>
 		</md-card-title-group>
 	</md-card>
 </section>
