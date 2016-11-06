@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, Input, ViewChild } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, ViewChild, ElementRef } from '@angular/core';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
@@ -9,25 +9,39 @@ import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 export class IdeaComponent implements OnChanges {
 	abstract;
 
-	@ViewChild('targetelem')
-	targetelem;
-
 	@Input('name')
 	idea_name = '';
 
-	idea: FirebaseObjectObservable<any>;
+	af_idea: FirebaseObjectObservable<any>;
+
+	idea = {
+		name: '',
+		target: '',
+		description: '',
+		businessmodel: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=',
+		tiers: '',
+		upsell: '',
+		costs: ''
+	};
 
 	constructor(private af: AngularFire) {
 	}
 
 	ngOnChanges(changes:SimpleChanges): void{
-		this.idea = this.af.database.object('/ideas/' + changes['idea_name'].currentValue);
+		this.af_idea = this.af.database.object('/ideas/' + changes['idea_name'].currentValue);
+		this.af_idea.subscribe((data) => {
+			Object.keys(this.idea).forEach((k) => {
+				if (!IdeaComponent.hasFocus(k)) {
+					this.idea[k] = data[k];
+				}
+			});
+		});
 	}
 
 	update (key: string, value: any) {
 		let change = {};
 		change[key] = value;
-		this.idea.update(change);
+		this.af_idea.update(change);
 	}
 
 	fileAdded ($event) {
@@ -37,5 +51,12 @@ export class IdeaComponent implements OnChanges {
 			this.update('businessmodel', reader.result);
 		};
 		reader.readAsDataURL(file);
+	}
+
+	static hasFocus (prop: string) {
+		if (!document.activeElement.attributes.getNamedItem('prop')){
+			return false;
+		}
+		return document.activeElement.attributes.getNamedItem('prop').value === prop;
 	}
 }

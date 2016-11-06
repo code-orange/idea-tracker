@@ -1,42 +1,42 @@
-<app-header [title]="(idea | async)?.name"></app-header>
+<app-header [title]="idea.name"></app-header>
 
 <section>
 	<div class="col">
 		<md-card>
 			<md-card-title>Target</md-card-title>
 			<md-card-content>
-				<div contenteditable="true" [textContent]="(idea | async)?.target" (input)="update('target', $event.target.innerText)"></div>
+				<div prop='target' contenteditable="true" [textContent]="idea.target" (input)="update('target', $event.target.innerText)"></div>
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-card-title>About</md-card-title>
 			<md-card-content>
-				<div contenteditable="true" [textContent]="(idea | async)?.description" (input)="update('description', $event.target.innerText)"></div>
+				<div prop='about' contenteditable="true" [textContent]="idea.description" (input)="update('description', $event.target.innerText)"></div>
 			</md-card-content>
 		</md-card>
 	</div>
 	<div class="col">
 		<md-card>
 			<md-card-title>Business model</md-card-title>
-			<img md-card-image [src]="(idea | async)?.businessmodel | safe">
+			<img md-card-image [src]="idea.businessmodel | safe">
 			<input type="file" accept="image/*" (change)="fileAdded($event)">
 		</md-card>
 		<md-card>
 			<md-card-title>Tiers</md-card-title>
 			<md-card-content>
-				<div contenteditable="true" [textContent]="(idea | async)?.tiers" (input)="update('tiers', $event.target.innerText)"></div>
+				<div prop='tiers' contenteditable="true" [textContent]="idea.tiers" (input)="update('tiers', $event.target.innerText)"></div>
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-card-title>Upsell</md-card-title>
 			<md-card-content>
-				<div contenteditable="true" [textContent]="(idea | async)?.upsell" (input)="update('upsell', $event.target.innerText)"></div>
+				<div prop='upsell' contenteditable="true" [textContent]="idea.upsell" (input)="update('upsell', $event.target.innerText)"></div>
 			</md-card-content>
 		</md-card>
 		<md-card>
 			<md-card-title>Costs</md-card-title>
 			<md-card-content>
-				<div contenteditable="true" [textContent]="(idea | async)?.costs" (input)="update('costs', $event.target.innerText)"></div>
+				<div prop='costs' contenteditable="true" [textContent]="idea.costs" (input)="update('costs', $event.target.innerText)"></div>
 			</md-card-content>
 		</md-card>
 	</div>
