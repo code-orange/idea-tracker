@@ -11,7 +11,7 @@
 		<md-card>
 			<md-card-title>About</md-card-title>
 			<md-card-content>
-				<div prop='about' contenteditable="true" [textContent]="idea.description" (input)="update('description', $event.target.innerText)"></div>
+				<div prop='description' contenteditable="true" [textContent]="idea.description" (input)="update('description', $event.target.innerText)"></div>
 			</md-card-content>
 		</md-card>
 	</div>
